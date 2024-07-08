@@ -25,11 +25,13 @@
 Un sistema operativo con estos programas:
 1. [Apache 2.4](https://www.apachelounge.com/download/)
 2. [PHP 8.3.9](https://php.net)
-3. [MySQL](https://www.mysql.com/products/community/)
-4. [phpMyAdmin](https://www.phpmyadmin.net/) (opcional)
+3. [MySQL Community Edition 9.0.0](https://www.mysql.com/products/community/)
+4. [phpMyAdmin 5.2.1](https://www.phpmyadmin.net/) (opcional)
+5. [Composer 2.7.7](https://getcomposer.org/download/)
 
 ## Instalación
 
 1. Clonar repositorio: `git clone https://github.com/nufrankz/test-mm.git`
-2. Ejecutar `megamedia_fcocerda.sql`: esto creará un nuevo usuario y una nueva base de datos, ambos con nombre `megamedia_fcocerda`, y poblará con datos la tabla `noticia`
-3. Iniciar servidor PHP en la carpeta del proyecto: `php -S localhost:8000`
+2. Instalar dependencias: `composer install`
+3. Ejecutar `megamedia_fcocerda.sql`: esto creará un nuevo usuario y una nueva base de datos, ambos con nombre `megamedia_fcocerda`, y poblará con datos la tabla `noticia`
+4. Iniciar servidor PHP en la carpeta del proyecto: `php -S localhost:8000`
