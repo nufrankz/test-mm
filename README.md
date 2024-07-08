@@ -1,10 +1,12 @@
 # Prueba Técnica Postulante Megamedia
 
-Autor: Franciso Cerda <hola@nufrankz.org>
+**Autor:** Franciso Cerda <hola@nufrankz.org>
 
-Licencia: [GPL-3.0 license](https://github.com/nufrankz/test-mm?tab=GPL-3.0-1-ov-file#readme)
+**Licencia:** [GPL-3.0 license](https://github.com/nufrankz/test-mm?tab=GPL-3.0-1-ov-file#readme)
 
-Proyecto creado en Symfony para el puesto de [Analista Programador Web](https://mega.trabajando.cl/empleos/ofertas/5719355/Analista-Programador---WEB.html) de Megamedia.
+**Descripción:** Proyecto creado en MySQL, PHP y Twig para el puesto de [Analista Programador Web](https://mega.trabajando.cl/empleos/ofertas/5719355/Analista-Programador---WEB.html) en Megamedia. Instrucciones recibidas en PDF incluídas en el repositorio.
+
+## Características 
 
 - Basado en el look&feel de [megamedia.cl](https://megamedia.cl/)
 - Completamente responsivo, uso de Bootstrap y custom CSS
@@ -17,7 +19,6 @@ Proyecto creado en Symfony para el puesto de [Analista Programador Web](https://
 3. Archivos .sql en repositorio, creación de usuario `megamedia_fcocerda` y sus tablas
 4. Videos YouTube embedidos en todas las noticias que contengan datos en el campo `video` (opcional)
 5. Google Analytics 4 integrado (id `G-CCNEVC6X5Y`)
-
 
 ## Requisitos
 
