@@ -14,7 +14,7 @@
 
 ## Cumplimiento
 
-1. Uso de PHP nativo (controladores `/*.php`) y Twig (`/templates`)
+1. Uso de PHP nativo (controladores `/*.php`) y Twig (`/templates/*.twig`)
 2. 5 artículos cargados en base de datos
 3. Archivos .sql en repositorio, creación de usuario `megamedia_fcocerda` y sus tablas
 4. Videos YouTube embedidos en todas las noticias que contengan datos en el campo `video` (opcional)
