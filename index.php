@@ -26,6 +26,4 @@ if (empty($noticias)) {
         'noticias' => $noticias
     ]);
 }
-
-echo $twig->render('index.html.twig', ['noticias' => $noticias]);
 ?>
