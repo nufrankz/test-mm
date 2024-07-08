@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Megamedia Noticias{% endblock %}
+
+{% block contenido %}
+<div id="news-index" class="container">
+    <div class="row">
+        <div class="col">
+        <h3>Noticias</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae ex odio. Donec at urna et erat tempus pellentesque sit amet in neque. Mauris non molestie sem. Aenean magna est, placerat sed neque sit amet, lacinia luctus neque. Vestibulum tempor egestas diam, nec interdum arcu convallis in. Duis enim sapien, cursus sit amet mollis pretium, suscipit non neque. Morbi erat sem, elementum eget mattis dignissim, mollis a justo. Aliquam eget ipsum at quam commodo pellentesque ut nec nibh.</p>
+        </div>
+    </div>
+    <div id="news-grid" class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+    {% for noticia in noticias %}
+        <div class="col">
+            <a href="detalle.php?id={{ noticia.id }}" class="news-figure">
+                <div class="img">
+                    <img src="https://picsum.photos/400/300?random={{ loop.index }}" alt="Imagen de noticia: {{ noticia.titulo }}">
+                </div>
+                <div class="txt">
+                    <h4>{{noticia.titulo}}</h4>
+                    <p>{{noticia.contenido | length > 50 ? noticia.contenido|slice(0,150) ~ '...' : noticia.contenido }}</p>
+                    <p>Por <strong>{{ noticia.autor }}</strong></p>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}

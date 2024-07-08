@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{% if noticia %}Editar Noticia{% else %}Nueva Noticia{% endif %}{% endblock %}
+
+{% block contenido %}
+    <h1>{% if noticia %}Editar Noticia{% else %}Nueva Noticia{% endif %}</h1>
+    <form action="editar.php" method="post">
+        {% if noticia %}
+            <input type="hidden" name="id" value="{{ noticia.id }}">
+        {% endif %}
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" value="{{ noticia.titulo|default('') }}" required>
+        <br>
+        <label for="contenido">Contenido:</label>
+        <textarea id="contenido" name="contenido" required>{{ noticia.contenido|default('') }}</textarea>
+        <br>
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" name="fecha" value="{{ noticia.fecha|default('') }}" required>
+        <br>
+        <label for="video">Video:</label>
+        <input type="text" id="video" name="video" value="{{ noticia.video|default('') }}" required>
+        <br>
+        <label for="autor">Autor:</label>
+        <input type="text" id="autor" name="autor" value="{{ noticia.autor|default('') }}" required>
+        <br>
+        <button type="submit">Guardar</button>
+    </form>
+    <a href="index.php">Volver a la lista</a>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ noticia.titulo }}{% endblock %}
+
+{% block contenido %}
+    <h1>{{ noticia.titulo }}</h1>
+    <p>{{ noticia.contenido }}</p>
+    <p><strong>Autor:</strong> {{ noticia.autor }}</p>
+    <p><strong>Fecha de Publicación:</strong> {{ noticia.fecha }}</p>
+    <p><strong>Video:</strong> {{ noticia.video }}</p>
+    <a href="index.php">Volver a la lista</a>
+    <a href="editar.php?id={{ noticia.id }}">Editar noticia</a>
+    <form id="deleteForm" action="editar.php" method="post" style="display:inline;">
+        <input type="hidden" name="id" value="{{ noticia.id }}">
+        <button type="button" id="deleteButton">Borrar</button>
+    </form>
+{% endblock %}
+
+{% block footerscripts %}
+    <script>
+        $(document).ready(function() {
+            $('#deleteButton').on('click', function() {
+                if (confirm('¿Estás seguro de que deseas borrar esta noticia?')) {
+                    $('#deleteForm').append('<input type="hidden" name="delete" value="true">').submit();
+                }
+            });
+        });
+    </script>
+{% endblock %}
