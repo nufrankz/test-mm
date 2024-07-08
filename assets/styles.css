@@ -71,7 +71,7 @@ body {
 }
  #news-index #news-grid .col .news-figure .img {
 	 position: relative;
-	 padding-bottom: 65%;
+	 padding-bottom: 200px;
 	 overflow: hidden;
 	 border-top-left-radius: 10px;
 	 border-top-right-radius: 10px;
@@ -157,6 +157,10 @@ body {
 	}
 	 h3 {
 		 font-size: 40px;
+	}
+	#news-index #news-grid .col {
+		padding-left: 0;
+		padding-right: 0;
 	}
 }
  @media (min-width: 992px) {

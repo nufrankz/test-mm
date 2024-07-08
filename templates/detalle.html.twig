@@ -3,27 +3,32 @@
 {% block title %}{{ noticia.titulo }}{% endblock %}
 
 {% block contenido %}
-    <h1>{{ noticia.titulo }}</h1>
-    <p>{{ noticia.contenido }}</p>
-    <p><strong>Autor:</strong> {{ noticia.autor }}</p>
-    <p><strong>Fecha de Publicación:</strong> {{ noticia.fecha }}</p>
-    <p><strong>Video:</strong> {{ noticia.video }}</p>
-    <a href="index.php">Volver a la lista</a>
-    <a href="editar.php?id={{ noticia.id }}">Editar noticia</a>
-    <form id="deleteForm" action="editar.php" method="post" style="display:inline;">
-        <input type="hidden" name="id" value="{{ noticia.id }}">
-        <button type="button" id="deleteButton">Borrar</button>
-    </form>
-{% endblock %}
+<div id="ver-noticia" class="container my-4">
+    <div class="row flex-column">
+        <div class="col">
+            <h2>{{ noticia.titulo }}</h2>
+            <p>Publicado por {{ noticia.autor }}, el {{ noticia.fecha|date('d/m/Y') }}.</p>
+        </div>
+        <div class="col-lg-10 contenido">
+            <div class="white">
+                <img src="https://picsum.photos/1080/200" class="img-fluid mb-3" alt="Imagen de noticia: {{ noticia.titulo }}">
+                <p>{{ noticia.contenido|nl2br|raw }}</p>
 
-{% block footerscripts %}
-    <script>
-        $(document).ready(function() {
-            $('#deleteButton').on('click', function() {
-                if (confirm('¿Estás seguro de que deseas borrar esta noticia?')) {
-                    $('#deleteForm').append('<input type="hidden" name="delete" value="true">').submit();
-                }
-            });
-        });
-    </script>
+                {% if noticia.video %}
+                <div class="row mt-4">
+                    <div class="col-md-8 mx-auto">
+                        <div class="youtube">
+                            <iframe src="https://www.youtube.com/embed/{{ noticia.video }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+        <div class="col editar-noticia py-4">
+            <a href="editar.php?id={{ noticia.id }}" class="btn btn-primary">Editar Noticia</a>
+        </div>
+    </div>
+</div>
 {% endblock %}

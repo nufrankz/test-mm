@@ -1,29 +1,116 @@
 {% extends "base.html.twig" %}
 
-{% block title %}{% if noticia %}Editar Noticia{% else %}Nueva Noticia{% endif %}{% endblock %}
+{% block title %}{{ noticia ? 'Editar Noticia' : 'Nueva Noticia' }}{% endblock %}
 
 {% block contenido %}
-    <h1>{% if noticia %}Editar Noticia{% else %}Nueva Noticia{% endif %}</h1>
-    <form action="editar.php" method="post">
+<div id="crear-noticia" class="container my-4">
+  <div class="row">
+    <div class="col-lg-6 contenido">
+      <div class="white">
+        <h2 class="mb-4">{{ noticia ? 'Editar Noticia' : 'Crear Nueva Noticia' }}</h2>
+        <form id="newsForm" action="editar.php" method="post">
+          {% if noticia %}
+            <input type="hidden" name="id" value="{{ noticia.id }}" />
+          {% else %}
+            <input type="hidden" name="id" value="0" />
+          {% endif %}
+
+          <div class="mb-3">
+            <label for="titulo" class="form-label">Título</label>
+            <p>Escriba el título de su noticia (obligatorio).</p>
+            <input
+              type="text"
+              id="titulo"
+              name="titulo"
+              class="form-control"
+              value="{{ noticia.titulo|default('') }}"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="contenido" class="form-label">Contenido</label>
+            <p>Escriba el contenido de su noticia (obligatorio).</p>
+            <textarea
+              id="contenido"
+              name="contenido"
+              class="form-control"
+              rows="5"
+              required
+            >{{ noticia.contenido|default('') }}</textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="fecha" class="form-label">Fecha</label>
+            <p>Seleccione la hora y fecha de publicación de su noticia (obligatorio).</p>
+            <input
+              type="date"
+              id="fecha"
+              name="fecha"
+              class="form-control"
+              value="{{ noticia.fecha|default('') }}"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="video" class="form-label">Video</label>
+            <p>Pegue el ID de su video de YouTube, de 11 carácteres (opcional).</p>
+            <input
+              type="text"
+              id="video"
+              name="video"
+              class="form-control font-monospace"
+              value="{{ noticia.video|default('') }}"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="autor" class="form-label">Autor</label>
+            <p>Escriba su nombre (obligatorio).</p>
+            <input
+              type="text"
+              id="autor"
+              name="autor"
+              class="form-control"
+              value="{{ noticia.autor|default('') }}"
+              required
+            />
+          </div>
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
         {% if noticia %}
-            <input type="hidden" name="id" value="{{ noticia.id }}">
+        <button type="button" id="deleteButton" data-id="{{ noticia.id }}" class="btn btn-danger">
+        Eliminar
+        </button>
         {% endif %}
-        <label for="titulo">Título:</label>
-        <input type="text" id="titulo" name="titulo" value="{{ noticia.titulo|default('') }}" required>
-        <br>
-        <label for="contenido">Contenido:</label>
-        <textarea id="contenido" name="contenido" required>{{ noticia.contenido|default('') }}</textarea>
-        <br>
-        <label for="fecha">Fecha:</label>
-        <input type="date" id="fecha" name="fecha" value="{{ noticia.fecha|default('') }}" required>
-        <br>
-        <label for="video">Video:</label>
-        <input type="text" id="video" name="video" value="{{ noticia.video|default('') }}" required>
-        <br>
-        <label for="autor">Autor:</label>
-        <input type="text" id="autor" name="autor" value="{{ noticia.autor|default('') }}" required>
-        <br>
-        <button type="submit">Guardar</button>
-    </form>
-    <a href="index.php">Volver a la lista</a>
+        <a href="/" class="btn btn-secondary">Volver a la lista</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block footerscripts %}
+    <script>
+        $(document).ready(function() {
+            $('#deleteButton').on('click', function() {
+                var id = $(this).data('id');
+                if (confirm('¿Estás seguro de que deseas borrar esta noticia?')) {
+                    $.ajax({
+                        url: 'editar.php',
+                        type: 'DELETE',
+                        data: { id: id },
+                        success: function() {
+                            window.location.href = 'index.php';
+                        },
+                        error: function() {
+                            alert('Error al eliminar la noticia.');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 {% endblock %}
