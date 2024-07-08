@@ -1,6 +1,7 @@
 # Prueba Técnica Postulante Megamedia
 
 Autor: Franciso Cerda <hola@nufrankz.org>
+
 Licencia: [GPL-3.0 license](https://github.com/nufrankz/test-mm?tab=GPL-3.0-1-ov-file#readme)
 
 Proyecto creado en Symfony para el puesto de [Analista Programador Web](https://mega.trabajando.cl/empleos/ofertas/5719355/Analista-Programador---WEB.html) de Megamedia.
